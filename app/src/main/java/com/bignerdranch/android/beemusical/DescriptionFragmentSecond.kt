@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
-class DescriptionFragment: Fragment() {
+class DescriptionFragmentSecond: Fragment() {
 
     private lateinit var nextImageButton: ImageButton
 
@@ -16,7 +16,7 @@ class DescriptionFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_description, container, false)
+        val view = inflater.inflate(R.layout.fragment_description_2, container, false)
 
         nextImageButton = view.findViewById(R.id.continue_image_button) as ImageButton
 
@@ -28,8 +28,8 @@ class DescriptionFragment: Fragment() {
     }
 
     companion object{
-        fun newInstance(): DescriptionFragment{
-            return DescriptionFragment()
+        fun newInstance(): DescriptionFragmentSecond{
+            return DescriptionFragmentSecond()
         }
     }
 }

@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 
-class LabelFragment:Fragment() {
+class DescriptionFragmentFirst: Fragment() {
 
-    private lateinit var startImageButton: ImageButton
+    private lateinit var nextImageButton: ImageButton
     private lateinit var hostActivity: MainActivity
 
     override fun onCreateView(
@@ -18,11 +18,9 @@ class LabelFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //Передача View
-        val view = inflater.inflate(R.layout.fragment_lable, container, false)
+        val view = inflater.inflate(R.layout.fragment_description_1, container, false)
 
-        //Инициализация виджетов
-        startImageButton = view.findViewById(R.id.start_image_button) as ImageButton
+        nextImageButton = view.findViewById(R.id.continue_image_button) as ImageButton
 
         return view
     }
@@ -30,9 +28,8 @@ class LabelFragment:Fragment() {
     override fun onStart() {
         super.onStart()
 
-        //Добавление слушателя на кнопку
-        startImageButton.setOnClickListener{
-            hostActivity.onFragmentSelected(DescriptionFragmentFirst.newInstance())
+        nextImageButton.setOnClickListener{
+            hostActivity.onFragmentSelected(DescriptionFragmentSecond.newInstance())
         }
     }
 
@@ -47,8 +44,8 @@ class LabelFragment:Fragment() {
     }
 
     companion object{
-        fun newInstance(): LabelFragment{
-            return LabelFragment()
+        fun newInstance(): DescriptionFragmentFirst{
+            return DescriptionFragmentFirst()
         }
     }
 }
