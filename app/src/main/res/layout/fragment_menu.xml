@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    >
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-100dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_background"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:contentDescription="@string/image1"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15"
+        app:layout_constraintVertical_bias="0.074"
+        app:srcCompat="@drawable/menu_levels"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintBottom_toTopOf="@+id/game_two_image_button"
+        app:layout_constraintEnd_toEndOf="@+id/game_one_image_button"
+        app:layout_constraintTop_toBottomOf="@+id/game_one_image_button"
+        app:layout_constraintVertical_bias="0.583"
+        app:srcCompat="@drawable/menu_grey_left_stick"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="72dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintBottom_toBottomOf="@+id/game_three_image_button"
+        app:layout_constraintStart_toStartOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/game_two_image_button"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/menu_grey_right_stick"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintEnd_toEndOf="@+id/game_three_image_button"
+        app:layout_constraintStart_toStartOf="@+id/game_four_image_button"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19"
+        app:srcCompat="@drawable/menu_grey_left_stick"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:contentDescription="@string/image1"
+        app:layout_constraintEnd_toEndOf="@+id/game_five_image_button"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/game_four_image_button"
+        app:layout_constraintTop_toBottomOf="@+id/imageView23"
+        app:srcCompat="@drawable/menu_grey_right_stick"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/game_one_image_button"
+        android:layout_width="119dp"
+        android:layout_height="106dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/start_button_one"
+        app:layout_constraintEnd_toEndOf="@+id/imageView18"
+        app:layout_constraintTop_toTopOf="@+id/imageView18"
+        app:srcCompat="@drawable/menu_gold_flower"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/game_two_image_button"
+        android:layout_width="80dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="112dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/start_button_two"
+        app:layout_constraintStart_toStartOf="@+id/imageView18"
+        app:layout_constraintTop_toTopOf="@+id/imageView18"
+        app:srcCompat="@drawable/menu_grey_flower"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/game_three_image_button"
+        android:layout_width="80dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/start_button_three"
+        app:layout_constraintEnd_toEndOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/game_one_image_button"
+        app:srcCompat="@drawable/menu_grey_flower"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/game_four_image_button"
+        android:layout_width="80dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="104dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/start_button_four"
+        app:layout_constraintStart_toStartOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/game_two_image_button"
+        app:srcCompat="@drawable/menu_grey_flower"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/game_five_image_button"
+        android:layout_width="106dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="108dp"
+        android:backgroundTint="#00FFFFFF"
+        android:contentDescription="@string/start_button_five"
+        app:layout_constraintEnd_toEndOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/game_three_image_button"
+        app:srcCompat="@drawable/menu_honey"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/menu_bar"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_description" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
