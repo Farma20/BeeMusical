@@ -66,16 +66,17 @@ class GameOneFragment: Fragment() {
 
         val speechListener1 = object : UtteranceProgressListener(){
             override fun onStart(utteranceId: String?) {
+                println("Start${j}")
                 listImageView[j].setImageResource(res_sel[j])
                 j++
 
             }
 
             override fun onDone(utteranceId: String?) {
-                gameBackgroundImageView.setImageResource(R.drawable.one_game_background_lourge)
-                listImageView[j].setImageResource(res_orig[j])
+                println("Done${j}")
                 hostActivity.speak("Скажи ${notes[j]}")
-
+                gameBackgroundImageView.setImageResource(R.drawable.one_game_background_lourge)
+                listImageView[j-1].setImageResource(res_orig[j-1])
             }
 
             override fun onError(utteranceId: String?) {
@@ -87,9 +88,11 @@ class GameOneFragment: Fragment() {
         hostActivity.mTTs.setOnUtteranceProgressListener(speechListener1)
 
 
-        hostActivity.speak("Стоит на поле домик.Рядом растет репка. Вечером приходит мишка" +
-                "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
-                "и синички летят в свой маленький домик")
+        hostActivity.speak("Стоит на поле домик.")
+
+//        Рядом растет репка. Вечером приходит мишка" +
+//                "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
+//                "и синички летят в свой маленький домик
 
 
 
