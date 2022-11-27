@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/one_game_blue" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/background"
         android:layout_width="404dp"
         android:layout_height="307dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView11"

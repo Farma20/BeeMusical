@@ -1,14 +1,14 @@
 package com.bignerdranch.android.beemusical
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mTTs: TextToSpeech
+    lateinit var mTTs: TextToSpeech
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,11 +16,12 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        mTTs = TextToSpeech(this){status->
-            if(status == TextToSpeech.SUCCESS){
+        mTTs = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
                 val locale: Locale = Locale("RU")
                 val result = mTTs.setLanguage(locale)
             }
+
         }
 
         //Транзакция фрагмента
@@ -33,11 +34,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun speak(){
-        val text: String = "Стоит на поле домик. Рядом растет репка. Вечером приходит мишка" +
-                "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки. "+
-                "и синички летят в свой маленький домик"
-        mTTs.speak(text, TextToSpeech.QUEUE_FLUSH, null)
+    fun speak(text_:String){
+        val text: String = text_
+
+        val map = HashMap<String, String>()
+        map[TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID] = "UniqueID";
+        mTTs.speak(text, TextToSpeech.QUEUE_FLUSH, map)
     }
 
     fun onFragmentSelected(fragment: Fragment){
