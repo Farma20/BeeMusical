@@ -2,15 +2,15 @@ package com.bignerdranch.android.beemusical
 
 import android.content.Context
 import android.os.Bundle
+import android.speech.tts.UtteranceProgressListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import androidx.fragment.app.Fragment
-import android.speech.tts.TextToSpeech
-import android.speech.tts.UtteranceProgressListener
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import java.util.*
+
 
 class GameOneFragment: Fragment() {
     private lateinit var hostActivity: MainActivity
@@ -24,6 +24,7 @@ class GameOneFragment: Fragment() {
     private lateinit var SI: ImageView
     private lateinit var DO_last: ImageView
     private lateinit var listImageView: List<ImageView>
+    private lateinit var congras:ImageView
 
 
     override fun onCreateView(
@@ -45,13 +46,27 @@ class GameOneFragment: Fragment() {
 
         listImageView = listOf(DO, RE, MI, FA, SOL, LA, SI, DO_last)
 
+        congras = view.findViewById(R.id.congras)
+
+
         return view
     }
 
+
+
     override fun onStart() {
         super.onStart()
-
-        val notes: List<String> = listOf("ДОМ","РЕПКА","МИШКА","ФАКЕЛ","СОЛНЦЕ", "ЛЯГУШКА", "СИНИЦА","ДОМ",)
+        congras.visibility = View.INVISIBLE
+        val notes: List<String> = listOf(
+            "ДОМ",
+            "РЕПКА",
+            "МИШКА",
+            "ФАКЕЛ",
+            "СОЛНЦЕ",
+            "ЛЯГУШКА",
+            "СИНИЦА",
+            "ДОМ"
+        )
 
         val res_orig: List<Int> = listOf(R.drawable.one_game_do, R.drawable.one_game_re,
             R.drawable.one_game_mi, R.drawable.one_game_fa, R.drawable.one_game_sol,
@@ -66,20 +81,23 @@ class GameOneFragment: Fragment() {
 
         val speechListener1 = object : UtteranceProgressListener(){
             override fun onStart(utteranceId: String?) {
-                println("Start${j}")
                 listImageView[j].setImageResource(res_sel[j])
                 j++
-
             }
 
             override fun onDone(utteranceId: String?) {
-                println("Done${j}")
-                hostActivity.speak("Скажи ${notes[j]}")
-                gameBackgroundImageView.setImageResource(R.drawable.one_game_background_lourge)
-                listImageView[j-1].setImageResource(res_orig[j-1])
+                if(j == listImageView.size){
+                    listImageView[j-1].setImageResource(res_orig[j-1])
+//
+                }else{
+                    hostActivity.speak("Скажи ${notes[j]}")
+                    gameBackgroundImageView.setImageResource(R.drawable.one_game_background_lourge)
+                    listImageView[j-1].setImageResource(res_orig[j-1])
+                }
             }
 
             override fun onError(utteranceId: String?) {
+
             }
         }
 
@@ -88,11 +106,9 @@ class GameOneFragment: Fragment() {
         hostActivity.mTTs.setOnUtteranceProgressListener(speechListener1)
 
 
-        hostActivity.speak("Стоит на поле домик.")
-
-//        Рядом растет репка. Вечером приходит мишка" +
-//                "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
-//                "и синички летят в свой маленький домик
+        hostActivity.speak("Стоит на поле домик.Рядом растет репка. Вечером приходит мишка" +
+                "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
+                "и синички летят в свой маленький домик")
 
 
 
