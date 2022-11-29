@@ -39,6 +39,12 @@ class MenuFragment: Fragment() {
         gameOneImageButton.setOnClickListener{
             hostActivity.onFragmentSelected(GameOneFragment.newInstance())
         }
+
+        gameTwoImageButton.setOnClickListener{
+            hostActivity.onFragmentSelected(GameTwoFragment.newInstance())
+        }
+
+
     }
 
     //функция, отлавливающая хост-активити
