@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import java.lang.Thread.sleep
 import java.util.*
 
 
@@ -56,16 +57,7 @@ class GameOneFragment: Fragment() {
 
         congras = view.findViewById(R.id.congras)
 
-        //Инициализация tts через контекст и onInit ассинфхронную функцию
-        mTTs = TextToSpeech(this.context) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                val locale = Locale("RU")
-                mTTs.language = locale
-                speak("Стоит на поле домик. Рядом растет репка. Вечером приходит мишка, " +
-                        "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
-                        " и синички летят в свой маленький домик")
-            }
-        }
+
 
         return view
     }
@@ -79,22 +71,23 @@ class GameOneFragment: Fragment() {
     }
 
 
+    private fun gamePlay(notes:List<String>, viewOriginal:List<Int>, viewSelect:List<Int>){
+        for(i in notes.indices){
+            listImageView[i].setImageResource(viewSelect[i])
+            speak("Скажи ${notes[i]}")
+            sleep(2000)
+//            listImageView[i].setImageResource(viewOriginal[i])
+        }
+    }
+
+
 
     override fun onStart() {
         super.onStart()
 
         //Инициалиация объектов взаимодействия с View
-
-        val notes: List<String> = listOf(
-            "ДОМ",
-            "РЕПКА",
-            "МИШКА",
-            "ФАКЕЛ",
-            "СОЛНЦЕ",
-            "ЛЯГУШКА",
-            "СИНИЦА",
-            "ДОМ"
-        )
+        val notes: List<String> = listOf("ДОМ", "РЕПКА", "МИШКА", "ФАКЕЛ", "СОЛНЦЕ", "ЛЯГУШКА",
+            "СИНИЦА", "ДОМ")
 
         val viewOriginal: List<Int> = listOf(R.drawable.one_game_do, R.drawable.one_game_re,
             R.drawable.one_game_mi, R.drawable.one_game_fa, R.drawable.one_game_sol,
@@ -105,25 +98,25 @@ class GameOneFragment: Fragment() {
             R.drawable.one_game_sol_select, R.drawable.one_game_la_select,
             R.drawable.one_game_si_select, R.drawable.one_game_do_select)
 
-
-        var j = 0
+        var i = 0
 
         //Слушатель tts, который отслеживает начало и завершение произношения
         val speechListener = object : UtteranceProgressListener(){
             override fun onStart(utteranceId: String?) {
-                listImageView[j].setImageResource(viewSelect[j])
-                j++
+                listImageView[i].setImageResource(viewSelect[i])
+                i++
             }
 
             override fun onDone(utteranceId: String?) {
-                if(j == listImageView.size){
-                    listImageView[j-1].setImageResource(viewOriginal[j-1])
-                    return
-//
+                if(i == listImageView.size){
+                    listImageView[i-1].setImageResource(viewOriginal[i-1])
+                    congras.alpha = 1.0f
+                    sleep(2000)
+
                 }else{
-                    speak("Скажи ${notes[j]}")
+                    speak("Скажи ${notes[i]}")
                     gameBackgroundImageView.setImageResource(R.drawable.one_game_background_lourge)
-                    listImageView[j-1].setImageResource(viewOriginal[j-1])
+                    listImageView[i-1].setImageResource(viewOriginal[i-1])
                 }
             }
 
@@ -133,12 +126,28 @@ class GameOneFragment: Fragment() {
             }
         }
 
-        mTTs.setOnUtteranceProgressListener(speechListener)
+        //Инициализация tts через контекст и onInit ассинфхронную функцию
+        mTTs = TextToSpeech(this.context) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                val locale = Locale("RU")
+                mTTs.language = locale
+                mTTs.setOnUtteranceProgressListener(speechListener)
+                speak("Стоит на поле домик. Рядом растет репка. Вечером приходит мишка, " +
+                        "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
+                        " и синички летят в свой маленький домик")
+            }
+        }
+
 
 
     }
 
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+
+    }
 
     //функция, отлавливающая хост-активити
     override fun onAttach(context: Context) {
@@ -150,7 +159,6 @@ class GameOneFragment: Fragment() {
         super.onDetach()
         mTTs.stop()
         mTTs.shutdown()
-
     }
 
     companion object{

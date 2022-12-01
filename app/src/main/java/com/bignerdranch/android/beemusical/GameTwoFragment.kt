@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import java.lang.Thread.sleep
 
 class GameTwoFragment: Fragment() {
 
@@ -21,8 +22,12 @@ class GameTwoFragment: Fragment() {
     private lateinit var noteSi: ImageView
     private lateinit var noteDoLast: ImageView
 
+    //создание ViewHolder
+    private lateinit var imageViewHolder: ImageView
+
     //инициализация списков
     private lateinit var noteList: List<ImageView>
+    private lateinit var noteImageViewList: List<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,8 +46,15 @@ class GameTwoFragment: Fragment() {
         noteSi = view.findViewById(R.id.two_game_si)
         noteDoLast = view.findViewById(R.id.two_game_do2)
 
+        //инициализация imageViewHolder
+        imageViewHolder = view.findViewById(R.id.imageViewHolder)
+
         //инициализация списков
         noteList = listOf(noteDo, noteRe, noteMi, noteFa, noteSol, noteLa, noteSi, noteDoLast)
+
+        noteImageViewList = listOf(R.drawable.game_two_do_rect, R.drawable.game_two_re_rect,
+            R.drawable.game_two_mi_rect, R.drawable.game_two_fa_rect, R.drawable.game_two_sol_rect,
+            R.drawable.game_two_la_rect, R.drawable.game_two_si_rect, R.drawable.game_two_do_rect)
 
         return view
     }
@@ -53,11 +65,18 @@ class GameTwoFragment: Fragment() {
         for (i in noteList.indices){
             noteList[i].setOnClickListener{
                 if(it.alpha == 0.0f){
+
+                    //Включаем кнопку, которая была включена
+                    for(j in noteList.indices)
+                        noteList[j].alpha = 0.0f
+
+                    //Выключаем нажатую кнопку
                     it.alpha = 1.0f
+
+                    //Передаем изображение нажатой кнопки
+                    imageViewHolder.setImageResource(noteImageViewList[i])
                 }
-                else{
-                    it.alpha = 0.0f
-                }
+
             }
 
             println(noteList[i].isVisible)

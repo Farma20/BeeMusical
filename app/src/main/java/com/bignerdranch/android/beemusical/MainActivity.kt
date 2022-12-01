@@ -45,12 +45,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun playMedia(){
-
-    }
-
 
     fun onFragmentSelected(fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
