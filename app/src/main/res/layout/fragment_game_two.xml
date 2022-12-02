@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/game_two_background" />
+        app:srcCompat="@drawable/game_two_background_description" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -154,5 +154,16 @@
         app:layout_constraintStart_toStartOf="@+id/imageView17"
         app:layout_constraintTop_toTopOf="@+id/imageView17"
         app:srcCompat="@drawable/game_two_place_holder" />
+
+    <ImageView
+        android:id="@+id/congras2"
+        android:layout_width="789dp"
+        android:layout_height="995dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView24"
+        app:srcCompat="@drawable/one_game_congras" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

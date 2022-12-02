@@ -76,7 +76,7 @@ class GameOneFragment: Fragment() {
             listImageView[i].setImageResource(viewSelect[i])
             speak("Скажи ${notes[i]}")
             sleep(2000)
-//            listImageView[i].setImageResource(viewOriginal[i])
+            listImageView[i].setImageResource(viewOriginal[i])
         }
     }
 
@@ -100,7 +100,7 @@ class GameOneFragment: Fragment() {
 
         var i = 0
 
-        //Слушатель tts, который отслеживает начало и завершение произношения
+//        Слушатель tts, который отслеживает начало и завершение произношения
         val speechListener = object : UtteranceProgressListener(){
             override fun onStart(utteranceId: String?) {
                 listImageView[i].setImageResource(viewSelect[i])
@@ -111,7 +111,8 @@ class GameOneFragment: Fragment() {
                 if(i == listImageView.size){
                     listImageView[i-1].setImageResource(viewOriginal[i-1])
                     congras.alpha = 1.0f
-                    sleep(2000)
+                    sleep(10000)
+                    hostActivity.onFragmentSelected(MenuFragment.newInstance())
 
                 }else{
                     speak("Скажи ${notes[i]}")
@@ -135,6 +136,7 @@ class GameOneFragment: Fragment() {
                 speak("Стоит на поле домик. Рядом растет репка. Вечером приходит мишка, " +
                         "зажигает факел и ложится спать. А утром выглядывает солнышко. Квакают ля гушки." +
                         " и синички летят в свой маленький домик")
+                sleep(14000)
             }
         }
 
