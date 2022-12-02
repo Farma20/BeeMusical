@@ -28,7 +28,7 @@ class DescriptionFragmentSecond: Fragment() {
     override fun onStart() {
         super.onStart()
         nextImageButton.setOnClickListener{
-            hostActivity.onFragmentSelected(MenuFragment.newInstance())
+            hostActivity.onFragmentSelected(MenuFragment.newInstance(1))
         }
     }
     //функция, отлавливающая хост-активити

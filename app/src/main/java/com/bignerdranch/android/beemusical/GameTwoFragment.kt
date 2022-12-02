@@ -97,7 +97,7 @@ class GameTwoFragment: Fragment() {
         }
 
         congrat.setOnClickListener{
-            hostActivity.onFragmentSelected(MenuFragment.newInstance())
+            hostActivity.onFragmentSelected(MenuFragment.newInstance(3))
         }
 
         for (i in noteList.indices){

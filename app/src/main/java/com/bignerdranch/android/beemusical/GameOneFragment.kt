@@ -112,7 +112,7 @@ class GameOneFragment: Fragment() {
                     listImageView[i-1].setImageResource(viewOriginal[i-1])
                     congras.alpha = 1.0f
                     sleep(10000)
-                    hostActivity.onFragmentSelected(MenuFragment.newInstance())
+                    hostActivity.onFragmentSelected(MenuFragment.newInstance(2))
 
                 }else{
                     speak("Скажи ${notes[i]}")
